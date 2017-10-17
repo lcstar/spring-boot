@@ -3,7 +3,10 @@ package com.lc.mapper;
 import com.lc.model.User;
 import com.lc.model.UserExample;
 import java.util.List;
+
+import com.lc.utils.UserSql;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
 
 public interface UserMapper {
     long countByExample(UserExample example);
@@ -27,4 +30,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    @SelectProvider(type = UserSql.class,method = "select")
+    List<User> selectByKey(User user);
 }
