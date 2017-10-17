@@ -4,10 +4,7 @@ import com.lc.model.User;
 import com.lc.service.UserService;
 import com.lc.utils.ReturnMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,4 +46,17 @@ public class UserController {
         }
         return message;
     }
+
+
+    @PutMapping()
+    public ReturnMessage getUser(@RequestBody User user){
+        ReturnMessage message = new ReturnMessage();
+        List<User> users = userService.getUser(user);
+        message.setCode(0);
+        message.setInfo("sucess");
+        message.setMess(users);
+        return message;
+
+    }
+
 }
