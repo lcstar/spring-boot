@@ -1,5 +1,6 @@
 package com.lc.controller;
 
+import com.lc.async.AsyncTask;
 import com.lc.model.User;
 import com.lc.service.UserService;
 import com.lc.utils.ReturnMessage;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 
 @RestController
@@ -57,6 +59,17 @@ public class UserController {
         message.setMess(users);
         return message;
 
+    }
+
+    @GetMapping("async")
+    public ReturnMessage testAsyncTask() throws InterruptedException {
+        AsyncTask asyncTask = new AsyncTask();
+        Future<String> task1 = asyncTask.task1();
+        Future<String> task2 = asyncTask.task2();
+        Future<String> task3 = asyncTask.task3();
+        ReturnMessage message = new ReturnMessage();
+        message.setInfo("success");
+        return message;
     }
 
 }
