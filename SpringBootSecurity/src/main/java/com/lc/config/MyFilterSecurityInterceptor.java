@@ -20,6 +20,7 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
     @Autowired
     private FilterInvocationSecurityMetadataSource securityMetadataSource;
 
+    @Autowired
     public void setMyAccessDecisionManager(MyAccessDecisionManager myAccessDecisionManager) {
         super.setAccessDecisionManager(myAccessDecisionManager);
     }

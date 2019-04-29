@@ -29,3 +29,5 @@ mybatis:
   mapper-locations:
   - classpath:mapper/*.xml
   type-aliases-package: com.lc.model
+
+
